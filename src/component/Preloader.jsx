@@ -12,7 +12,7 @@ function Preloader() {
   }, []);
 
   return (
-    <div className='flex justify-center item-center mt-48'>
+    <div className='flex justify-center item-center mt-[30vh]'>
        <img src=".\Image\loader.gif" alt="Loading..." />
     </div>
   );
