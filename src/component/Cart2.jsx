@@ -42,9 +42,11 @@ const Cart2 = () => {
                   </Link>
                 </div>
                 <div className="bg-white p-2 rounded-full shadow-md">
+                  <Link to="/cart2">
                   <button onClick={() => removeFromCart(item.id)}>
                     <img src="/Svg/x-solid.svg" alt="Remove from cart" className="w-5 h-5" />
                   </button>
+                  </Link>
                 </div>
               </div>
 

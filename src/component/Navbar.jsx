@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../App"; // Adjust path if necessary
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { counter } = useCart(); // Use shared counter
 
   return (
     <div>
@@ -19,10 +21,12 @@ function Navbar() {
               </Link>
 
               {/* Cart Button */}
-              <button className="flex items-center">
+              <Link to="/cart" className="flex items-center">
                 <img src="/Svg/cart-shopping-solid.svg" className="h-8" alt="Cart" />
-                <span className="text-black dark:text-white text-lg font-semibold">(0)</span>
-              </button>
+                <span className="text-black dark:text-white text-lg font-semibold">
+                  ({counter}) {/* Displays total items from Cart1 to Cart12 */}
+                </span>
+              </Link>
 
               {/* User Profile Button */}
               <button
@@ -34,20 +38,19 @@ function Navbar() {
 
               {/* Dropdown Menu */}
               {isOpen && (
-                <div className="absolute right-30 mt-[210px] max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-[500px] bg-white border border-gray-200 shadow-lg p-6 z-10">
-                <p className="text-center text-lg font-semibold">Please Login First!</p>
+                <div className="absolute right-24 top-10 mt-8 w-96 max-w-xs sm:max-w-sm md:max-w-md bg-white border border-gray-200 shadow-lg p-4 sm:p-6 z-10 rounded-lg">
+                <p className="text-center text-base sm:text-lg font-semibold">Please Login First!</p>
                 <div className="flex justify-center items-center gap-4 mt-4">
-                  <Link to="/user" className="w-1/2">
+                  <Link to="/user" className="w-full sm:w-1/2">
                     <button
-                      className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg"
+                      className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-lg"
                       onClick={() => setIsOpen(false)}
                     >
                       Login
                     </button>
-                  </Link>
+                    </Link>
                 </div>
               </div>
-                
               )}
             </div>
 
@@ -78,7 +81,6 @@ function Navbar() {
             </button>
           </div>
 
-          {/* Desktop Menu */}
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
             id="navbar-cta"
